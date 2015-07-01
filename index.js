@@ -12,8 +12,12 @@ function EventsTree () {
   this.tree = {}
 }
 
+EventsTree.prototype.node = function node (path) {
+  return dot.get(this.tree, path)
+}
+
 EventsTree.prototype.at = function at (path) {
-  var node = dot.get(this.tree, path)
+  var node = this.node(path)
   if (!node) {
     node = {}
     dot.set(this.tree, path, node)
