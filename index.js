@@ -42,8 +42,8 @@ EventsTree.prototype.below = function (path, callback) {
     var state = this
     var emitter = node[EVENTS]
     if (!emitter) return
-    var fullPath = (path ? [path] : []).concat(state.path).join('.')
-    callback(fullPath, emitter)
+    var currentPath = (path ? [path] : []).concat(state.path).join('.')
+    callback(currentPath, emitter)
   })
 }
 
