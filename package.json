@@ -1,10 +1,10 @@
 {
-  "name": "listener-tree",
+  "name": "events-tree",
   "main": "index.js",
   "version": "0.0.0",
   "description": "A tree structure for storing and accessing hierarchical event listeners",
   "license": "MIT",
-  "repository": "bendrucker/listener-tree",
+  "repository": "bendrucker/events-tree",
   "author": {
     "name": "Ben Drucker",
     "email": "bvdrucker@gmail.com",

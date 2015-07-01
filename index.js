@@ -4,15 +4,15 @@ var dot = require('dot-prop')
 var Symbol = require('es6-symbol')
 var bind = require('bind-to')
 
-module.exports = ListenerTree
+module.exports = EventsTree
 
 var LISTENERS = Symbol('listeners')
 
-function ListenerTree () {
+function EventsTree () {
   this.tree = {}
 }
 
-ListenerTree.prototype.at = function at (path) {
+EventsTree.prototype.at = function at (path) {
   var location = dot.get(this.tree, path)
   if (!location) {
     location = {}
