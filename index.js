@@ -3,6 +3,7 @@
 var EventEmitter = require('events').EventEmitter
 var dot = require('dot-prop')
 var Symbol = require('es6-symbol')
+var traverse = require('traverse')
 
 module.exports = EventsTree
 
@@ -13,7 +14,7 @@ function EventsTree () {
 }
 
 EventsTree.prototype.node = function node (path) {
-  return dot.get(this.tree, path)
+  return path ? dot.get(this.tree, path) : this.tree
 }
 
 EventsTree.prototype.at = function at (path) {
@@ -26,4 +27,26 @@ EventsTree.prototype.at = function at (path) {
     node[EVENTS] = new EventEmitter()
   }
   return node[EVENTS]
+}
+
+EventsTree.prototype.below = function (path, callback) {
+  if (typeof path === 'function') {
+    callback = path
+    path = ''
+  }
+
+  var node = this.node(path)
+  if (!hasChildren(node)) return
+
+  traverse(node).forEach(function eachNode (node) {
+    var state = this
+    var emitter = node[EVENTS]
+    if (!emitter) return
+    var fullPath = (path ? [path] : []).concat(state.path).join('.')
+    callback(fullPath, emitter)
+  })
+}
+
+function hasChildren (node) {
+  return node && !!Object.keys(node).length
 }
