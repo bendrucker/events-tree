@@ -3,15 +3,15 @@
 var test = require('tape')
 var Tree = require('./')
 
-test('simple', function (t) {
+test('node', function (t) {
+  t.plan(3)
   var tree = new Tree()
   var node = tree.at('foo.bar')
-  t.equal(node.get().length, 0)
-  function fn () {}
-  node.add(fn)
-  t.equal(node.get().length, 1)
-  t.equal(node.get()[0], fn)
-  node.clear()
-  t.equal(node.get().length, 0)
-  t.end()
+  t.equal(node, tree.at('foo.bar'))
+  t.ok(node.emit)
+  function fn (a) {
+    t.equal(a, 1)
+  }
+  node.on('e', fn)
+  node.emit('e', 1)
 })
