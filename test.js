@@ -38,3 +38,36 @@ test('below', function (t) {
 
   t.end()
 })
+
+test('above', function (t) {
+  t.test('from root', function (t) {
+    t.plan(0)
+    var tree = new Tree()
+    tree.above(function () {
+      t.fail('Should not be called')
+    })
+    t.end()
+  })
+
+  t.test('from path', function (t) {
+    t.plan(4)
+    var tree = new Tree()
+    var root = tree.root()
+    var node = tree.at('foo')
+    var i = 0
+    tree.above('foo.bar', function (path, emitter) {
+      if (!i) {
+        // first time is foo
+        t.equal(path, 'foo')
+        t.equal(emitter, node)
+      } else {
+        // next time is root
+        t.equal(path, '')
+        t.equal(emitter, root)
+      }
+      i++
+    })
+  })
+
+  t.end()
+})

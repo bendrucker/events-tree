@@ -29,6 +29,10 @@ EventsTree.prototype.at = function at (path) {
   return node[EVENTS]
 }
 
+EventsTree.prototype.root = function root () {
+  return this.at()
+}
+
 EventsTree.prototype.below = function (path, callback) {
   if (typeof path === 'function') {
     callback = path
@@ -45,6 +49,19 @@ EventsTree.prototype.below = function (path, callback) {
     var currentPath = (path ? [path] : []).concat(state.path).join('.')
     callback(currentPath, emitter)
   })
+}
+
+EventsTree.prototype.above = function (path, callback) {
+  if (typeof path === 'function' || !path) return
+  var parts = path.split('.')
+  parts.pop()
+  for (var i = parts.length; i >= 0; i--) {
+    var currentPath = parts.slice(0, i).join('.')
+    var node = this.node(currentPath)
+    var emitter = node[EVENTS]
+    if (!emitter) continue
+    callback(currentPath, emitter)
+  }
 }
 
 function hasChildren (node) {
