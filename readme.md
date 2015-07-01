@@ -57,7 +57,7 @@ Traverse downwards through child nodes below the specified path.
 
 ##### path
 
-Type: `string`
+Type: `string`  
 Default: `''`
 
 If a callback is passed as the first argument, traversal will begin at the root.
