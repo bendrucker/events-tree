@@ -14,7 +14,7 @@ $ npm install --save events-tree
 
 ```js
 var Tree = require('events-tree')
-var tree = new Tree()
+var tree = Tree()
 var node = tree.at('foo.bar.baz')
 
 node.on('event', function (value) {
@@ -32,7 +32,7 @@ tree.below('foo.bar', function (path, emitter) {
 
 ## API
 
-#### `new Tree()` -> `tree`
+#### `Tree()` -> `tree`
 
 Creates a new event tree.
 

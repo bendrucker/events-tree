@@ -10,6 +10,7 @@ module.exports = EventsTree
 var EVENTS = Symbol('events')
 
 function EventsTree () {
+  if (!(this instanceof EventsTree)) return new EventsTree()
   this.tree = {}
 }
 
