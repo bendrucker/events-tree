@@ -1,4 +1,4 @@
-# events-tree [![Build Status](https://travis-ci.org/bendrucker/events-tree.svg?branch=master)](https://travis-ci.org/bendrucker/events-tree)
+# events-tree [![Build Status](https://travis-ci.org/bendrucker/events-tree.svg?branch=master)](https://travis-ci.org/bendrucker/events-tree) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/events-tree.svg)](https://greenkeeper.io/)
 
 > A tree structure for storing and accessing hierarchical event emitters
 
