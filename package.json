@@ -24,7 +24,7 @@
     "hierarchy"
   ],
   "dependencies": {
-    "dot-prop": "~2.2.0",
+    "dot-prop": "~5.2.0",
     "es6-symbol": "~2.0.1",
     "traverse": "~0.6.6"
   },
